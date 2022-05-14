@@ -1,14 +1,28 @@
 fragment PostParts on Post {
-  title
-  heroImg
-  excerpt
-  author {
-    ... on Document {
-      id
+  ... on PostTemplate1 {
+    title
+    heroImg
+    excerpt
+    author {
+      ... on Document {
+        id
+      }
     }
+    date
+    _body
   }
-  date
-  _body
+  ... on PostTemplate2 {
+    title
+    heroImg
+    excerpt
+    author {
+      ... on Document {
+        id
+      }
+    }
+    date
+    _body
+  }
 }
 
 fragment GlobalParts on Global {

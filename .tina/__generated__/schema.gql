@@ -80,21 +80,37 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String): DocumentConnection!
 }
 
-union DocumentNode = Post | Global | Author | Page
+union DocumentNode = PostTemplate1 | PostTemplate2 | Global | Author | Page
 
-union PostAuthor = Author
+union PostTemplate1Author = Author
 
-type Post implements Node & Document {
+type PostTemplate1 implements Node & Document {
   title: String
   heroImg: String
   excerpt: JSON
-  author: PostAuthor
+  author: PostTemplate1Author
   date: String
   _body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
+
+union PostTemplate2Author = Author
+
+type PostTemplate2 implements Node & Document {
+  title: String
+  heroImg: String
+  excerpt: JSON
+  author: PostTemplate2Author
+  date: String
+  _body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+union Post = PostTemplate1 | PostTemplate2
 
 type PostConnectionEdges {
   cursor: String!
@@ -273,13 +289,27 @@ input DocumentMutation {
   page: PageMutation
 }
 
-input PostMutation {
+input PostTemplate1Mutation {
   title: String
   heroImg: String
   excerpt: JSON
   author: String
   date: String
   _body: JSON
+}
+
+input PostTemplate2Mutation {
+  title: String
+  heroImg: String
+  excerpt: JSON
+  author: String
+  date: String
+  _body: JSON
+}
+
+input PostMutation {
+  template1: PostTemplate1Mutation
+  template2: PostTemplate2Mutation
 }
 
 input GlobalHeaderIconMutation {
