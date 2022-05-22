@@ -3,16 +3,15 @@ query PageQuery {
   postConnection {
     edges {
       node {
-        id
-        _values
-        author {
-          ... on Author {
-            ...AuthorParts
+        ... on Document {
+          id
+          _values
+          _sys {
+            filename
           }
         }
-        _sys {
-          filename
-        }
+        ...Template1Author
+        ...Template2Author
       }
     }
   }
@@ -29,11 +28,7 @@ query BlogPostQuery($relativePath: String!) {
   ...LayoutQueryFragment
   post(relativePath: $relativePath) {
     ...PostParts
-    author {
-      ... on Author {
-        name
-        avatar
-      }
-    }
+    ...Template1Author
+    ...Template2Author
   }
 }

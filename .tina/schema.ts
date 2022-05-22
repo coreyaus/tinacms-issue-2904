@@ -406,6 +406,9 @@ export const tinaConfig = defineConfig({
     return cms;
   },
   formifyCallback: ({ formConfig, createForm, createGlobalForm }) => {
+    console.log("Creating a form with the following config:");
+    console.log(formConfig);
+
     if (formConfig.id === "content/global/index.json") {
       return createGlobalForm(formConfig);
     }

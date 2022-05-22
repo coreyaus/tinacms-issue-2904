@@ -3,3 +3,21 @@ fragment LayoutQueryFragment on Query {
     ...GlobalParts
   }
 }
+
+fragment Template1Author on PostTemplate1 {
+  author {
+    ... on Author {
+      name
+      avatar
+    }
+  }
+}
+
+fragment Template2Author on PostTemplate2 {
+  author {
+    ... on Author {
+      name
+      avatar
+    }
+  }
+}
