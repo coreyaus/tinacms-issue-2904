@@ -4,6 +4,7 @@ import { featureBlockSchema } from "../components/blocks/features";
 import { heroBlockSchema } from "../components/blocks/hero";
 import { testimonialBlockSchema } from "../components/blocks/testimonial";
 import { iconSchema } from "../components/util/icon";
+import { client } from "./__generated__/client";
 
 const blogPostFields: TinaField[] = [
   {
@@ -369,7 +370,7 @@ const apiURL =
     : `https://content.tinajs.io/content/${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}/github/${branch}`;
 
 export const tinaConfig = defineConfig({
-  apiURL,
+  client: client,
   schema,
   mediaStore: async () => {
     const pack = await import("next-tinacms-cloudinary");
