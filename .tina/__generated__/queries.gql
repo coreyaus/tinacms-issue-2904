@@ -15,8 +15,21 @@ query post($relativePath: String!) {
   }
 }
 
-query postConnection {
-  postConnection {
+query postConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PostFilter) {
+  postConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
@@ -54,8 +67,21 @@ query global($relativePath: String!) {
   }
 }
 
-query globalConnection {
-  globalConnection {
+query globalConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: GlobalFilter) {
+  globalConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
@@ -93,8 +119,21 @@ query author($relativePath: String!) {
   }
 }
 
-query authorConnection {
-  authorConnection {
+query authorConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: AuthorFilter) {
+  authorConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
@@ -132,8 +171,21 @@ query page($relativePath: String!) {
   }
 }
 
-query pageConnection {
-  pageConnection {
+query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PageFilter) {
+  pageConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
